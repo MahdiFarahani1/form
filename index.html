@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="css.css">
+<script src="sl.js"></script>
+<script src="js.js"></script>
+
+
+
+<title>FORM</title>
+
+</head>
+
+<body>
+<h1 id="top_text">Form Validation</h1>
+
+
+<div id="form_controller">
+<form name="fform" onsubmit="return Validation()">
+
+<input id="name" class="input name" value=""  type="text" name="name" placeholder="Name"> <br><br>
+<input id="user" class="input" type="text" name="user" placeholder="User Name"> <br><br>
+<input id="password" class="input" type="password" name="password"  placeholder="password"><br><br>
+<input id="email" class="input" type="email" name="email" placeholder="Email"> <br><br>
+<input id="phone" class="input" type="text" name="Phone"  placeholder="Phone"><br><br>
+<input class="input_btn input " name="sumbit" type="submit" value="Submit"  >
+
+</form>
+<p id="Erorr">!Erorr!</p>
+</div>
+
+
+
+
+<script>
+   
+    var btn = document.getElementsByClassName("input_btn");
+const name =document.getElementById("name").value;
+var username =document.forms["fform"]["user"];
+var password =document.forms["fform"]["password"];
+var email =document.forms["fform"]["email"];
+var phone =document.forms["fform"]["phone"];
+var er = document.getElementById("Erorr");
+
+
+
+
+function Validation() {
+   var reg_name = /[^a-z]/i;   
+   var reg_user = /[a-zA-z0-9]+\_+[a-zA-Z0-9]/;
+   var reg_pass_lower =/[a-z]/g;
+   var reg_pass_upper =/[A-Z]/g;
+   var reg_pass_number =/[0-9]/g;
+   var reg_email =/[a-zA-z0-9]+\@+[a-z]+\.+[a-z]/ ;
+   var reg_phone =/[^0-9]/g ;
+    if ( document.getElementById("name").value == "" || document.getElementById("user").value == "" || document.getElementById("password").value == "" ||document.getElementById("email").value == ""  || document.getElementById("phone").value == "" ) {
+      //  er.style.opacity = 1;
+      //  er.textContent = "!Erorr!";
+       // er.textContent += " " + "pls fill all blank fileds!";
+       Swal.fire(
+         'Opss...',
+         'Pls fill all blank fileds!',
+         'Error',
+         
+       )
+       return false;
+       
+     
+    }
+    
+    if (document.getElementById("name").value.match(reg_name)) {
+       // er.style.opacity = 1;
+      //  er.textContent = "!Erorr!";
+     //   er.textContent += " " + "You must use only letters for the name!";
+     Swal.fire(
+         'Opss...',
+         'You must use only letters for the name!',
+         'Error',
+         
+       )
+
+
+       return false;
+    }
+    if (!document.getElementById("user").value.match(reg_user)) {
+      //  er.style.opacity = 1;
+    //  er.textContent = "!Erorr!";
+       // er.textContent += " " + "you most use _ in your midlle user name!";
+       Swal.fire(
+         'Opss...',
+         'You must use _ in your midlle user name!',
+         'Error',
+         
+       )
+        return false;
+
+    }
+    if (!document.getElementById("password").value.match(reg_pass_lower)) {
+      //  er.style.opacity = 1;
+       // er.textContent = "!Erorr!";
+       // er.textContent += " " + "you most use lower letters for the passwrd!";
+       Swal.fire(
+         'Opss...',
+         'You must use lower letters for the passwrd!',
+         'Error',
+         
+       )
+        return false;
+
+    }
+    if (!document.getElementById("password").value.match(reg_pass_upper)) {
+      //  er.style.opacity = 1;
+      //  er.textContent = "!Erorr!";
+      //  er.textContent += " " + "you most use Upper letters for the passwrd!";
+      Swal.fire(
+         'Opss...',
+         'You must use Upper letters for the passwrd!',
+         'Error',
+         
+       )
+        return false;
+
+    }
+    if (!document.getElementById("password").value.match(reg_pass_number)) {
+      //  er.style.opacity = 1;
+     //   er.textContent = "!Erorr!";
+      //  er.textContent += " " + "you most use numbers for the passwrd!";
+      Swal.fire(
+         'Opss...',
+         'You must use numbers for the passwrd!',
+         'Error',
+         
+       )
+        return false;
+
+    }
+    if (document.getElementById("password").value.length < 8) {
+        
+       // er.style.opacity = 1;
+       // er.textContent = "!Erorr!";
+       // er.textContent += " " + "you must use at least 8 characters for your password!";
+       Swal.fire(
+         'Opss...',
+         'You must use at least 8 characters for your password!',
+         'Error',
+         
+       )
+        return false;
+
+    }
+    if (!document.getElementById("email").value.match(reg_email)) {
+      //  er.style.opacity = 1;
+      //  er.textContent = "!Erorr!";
+       // er.textContent += " " + "yoe most use a real email!";
+       Swal.fire(
+         'Opss...',
+         'You must use a real email!',
+         'Error',
+         
+       )
+        return false;
+ 
+    }
+    if (document.getElementById("phone").value.match(reg_phone)) {
+       // er.style.opacity = 1;
+      //  er.textContent = "!Erorr!";
+       // er.textContent += " " + "yoe most use just numbers for the phone!";
+       Swal.fire(
+         'Opss...',
+         'You must use just numbers for the phone!',
+         'Error',
+         
+       )
+        return false;
+ 
+    }
+
+   
+    }
+    
+
+</script>
+
+
+
+
+</body>
+</html>
